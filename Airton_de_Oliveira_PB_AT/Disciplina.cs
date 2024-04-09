@@ -9,8 +9,7 @@ namespace Airton_de_Oliveira_PB_AT
 {
     internal class Disciplina
     {
-        private string? codDisciplina;
-        private int nomeDisciplina;
+       
 
         public int Codigo { get; set; }
         public string Nome { get; set; }

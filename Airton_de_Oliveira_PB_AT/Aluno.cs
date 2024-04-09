@@ -33,7 +33,7 @@ namespace Airton_de_Oliveira_PB_AT
             Console.WriteLine($"Turmas do(a) aluno(a) {Nome}:");
             foreach (Turma turma in Turmas)
             {
-                Console.WriteLine($" - {turma.Codigo}");
+                Console.WriteLine($" Código da turma: {turma.Codigo}");
             }
         }
 

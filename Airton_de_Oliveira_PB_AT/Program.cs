@@ -4,10 +4,16 @@ namespace Airton_de_Oliveira_PB_AT
 {
     internal class Program
     {
-        static List<Turma> Turmas = new List<Turma>();
-        static List<Aluno> Alunos = new List<Aluno>();
+
+        //teste
+      //  static List<Turma> Turmas = new List<Turma>();
+      //  static List<Aluno> Alunos = new List<Aluno>();
         static void Main(string[] args)
         {
+             List<Turma> Turmas = new List<Turma>();
+             List<Aluno> Alunos = new List<Aluno>();
+            List<Professor> Professores = new List<Professor>();
+            List<Disciplina> Disciplinas = new List<Disciplina>();
 
             int op;
 
@@ -15,7 +21,7 @@ namespace Airton_de_Oliveira_PB_AT
             {
                 Console.WriteLine("\nSelecionar uma opção:");
 
-                Console.WriteLine("1. Adicionar Aluno");
+                Console.WriteLine("1. Adicionar Alunos");
                 Console.WriteLine("2. Abrir turma");
                 Console.WriteLine("3. Gerar pauta");
                 Console.WriteLine("4. Criar turma");
@@ -27,31 +33,31 @@ namespace Airton_de_Oliveira_PB_AT
                 switch (op)
                 {
                     case 1:
-                        AdicionarAluno();
+                        AdicionarAluno(Turmas, Alunos);
                         break;
 
                     case 2:
-                        AbrirTurma();
+                        AbrirTurma(Turmas);
 
                         break;
 
                     case 3:
-                        GerarPauta();
+                        GerarPauta(Turmas);
 
                         break;
 
                     case 4:
-                        CriarTurma();
+                        CriarTurma(Turmas, Professores, Disciplinas);
 
                         break;
 
                     case 5:
-                        CriarAluno();
+                        CriarAluno(Alunos);
 
                         break;
 
                     case 6:
-                        ExibirTurmas();
+                        ExibirTurmas(Alunos);
 
                         break;
 
@@ -63,7 +69,7 @@ namespace Airton_de_Oliveira_PB_AT
             } while (op != 0);
         }
 
-        public static void AdicionarAluno()
+        public static void AdicionarAluno(List<Turma> Turmas, List<Aluno> Alunos)
         {
             Console.WriteLine("Digite o código do aluno a ser adicionado: ");
             int matricula = int.Parse(Console.ReadLine());
@@ -90,7 +96,7 @@ namespace Airton_de_Oliveira_PB_AT
 
         }
 
-        public static void CriarTurma()
+        public static void CriarTurma(List<Turma> Turmas, List<Professor> Professores, List<Disciplina> Disciplinas)
         {
             Console.WriteLine("Digite a matricula do professor ");
             int matricula = int.Parse(Console.ReadLine());
@@ -114,12 +120,14 @@ namespace Airton_de_Oliveira_PB_AT
             Turma turma = new Turma(codTurma, disciplina, professor);
  
             Turmas.Add(turma);
+            Professores.Add(professor);
+            Disciplinas.Add(disciplina);
 
             Console.WriteLine("Turma criada");
 
         }
 
-        public static void CriarAluno()
+        public static void CriarAluno(List<Aluno> Alunos)
         {
             Console.WriteLine("Digite o nome do aluno: ");
             string nomeAluno = Console.ReadLine();
@@ -134,7 +142,7 @@ namespace Airton_de_Oliveira_PB_AT
 
         }
 
-        public static void AbrirTurma()
+        public static void AbrirTurma(List<Turma> Turmas)
         {
             Console.WriteLine("Digite o código da turma ");
             int codTurma = int.Parse(Console.ReadLine());
@@ -157,12 +165,12 @@ namespace Airton_de_Oliveira_PB_AT
 
         }
 
-        public static void GerarPauta()
+        public static void GerarPauta(List<Turma> Turmas)
         {
             Console.WriteLine(Turmas[0].gerarPauta());
         }
 
-        public static void ExibirTurmas()
+        public static void ExibirTurmas( List<Aluno> Alunos)
         {
             Console.WriteLine("Digite a matricula do aluno: ");
             int matriculaAluno = int.Parse(Console.ReadLine());
